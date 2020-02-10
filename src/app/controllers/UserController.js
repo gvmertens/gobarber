@@ -65,7 +65,7 @@ class UserController {
             }
         }
 
-        if (oldPassword && (await user.checkPassword(oldPassword))) {
+        if (oldPassword && !(await user.checkPassword(oldPassword))) {
             return res.status(401).json({ error: 'Senha antiga é inválida.' });
         }
 
